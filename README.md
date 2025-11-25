@@ -1,4 +1,4 @@
-# DeepCopy
+# bufferd
 
 A brief description of what your project does. For example:  
 > Desktop wrapper with Rust backend and Vanilla JS + TypeScript frontend for streamlined user interactions.
