@@ -10,12 +10,14 @@
     "frontendDist": "../dist"
   },
   "app": {
-    "withGlobalTauri": true,
+    "withGlobalTauri": false,
     "windows": [
       {
         "title": "vold",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "decorations": false,
+        "alwaysOnBottom": true
       }
     ],
     "security": {

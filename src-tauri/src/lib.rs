@@ -5,6 +5,14 @@ use tauri::{
 };
 use tauri_plugin_clipboard_manager::ClipboardExt;
 
+#[tauri::command]
+fn get_clipboard(app: tauri::AppHandle) -> String {
+    app.clipboard().read_text().unwrap_or_else(|_| "".into())
+}
+#[tauri::command]
+fn write_clipboard(app: tauri::AppHandle, text: String) {
+    let _ = app.clipboard().write_text(text);
+}
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -132,7 +140,7 @@ pub fn run() {
 
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![])
+        .invoke_handler(tauri::generate_handler![get_clipboard, write_clipboard])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
